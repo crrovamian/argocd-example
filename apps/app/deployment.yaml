@@ -5,7 +5,7 @@ metadata:
   labels:
     app: example-app
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: example-app
@@ -24,6 +24,8 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        - name: VERSION
+          value: "v1"
         command: ["/bin/sh", "/scripts/generate.sh"]
         volumeMounts:
         - name: html-volume

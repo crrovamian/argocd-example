@@ -9,18 +9,21 @@ data:
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Example App</title>
+        <title>ArgoCD Test App</title>
         <style>
             body { font-family: Arial; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; flex-direction: column; }
             h1 { color: #333; }
             .info { color: #666; margin-top: 20px; }
+            .badge { background: #4CAF50; color: white; padding: 5px 10px; border-radius: 5px; }
         </style>
     </head>
     <body>
-        <h1>Example App</h1>
+        <h1>ArgoCD Test App</h1>
         <div class="info">
-            <p>Pod: $HOSTNAME</p>
-            <p>IP: $POD_IP</p>
+            <p><span class="badge">Version:</span> ${VERSION:-N/A}</p>
+            <p><span class="badge">Pod:</span> $HOSTNAME</p>
+            <p><span class="badge">IP:</span> $POD_IP</p>
+            <p><em>This is a test application for ArgoCD</em></p>
         </div>
     </body>
     </html>
