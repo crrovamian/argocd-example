@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: example-app-html
+  name: nginx-app-html
 data:
   generate.sh: |
     #!/bin/sh
@@ -9,7 +9,7 @@ data:
     <!DOCTYPE html>
     <html>
     <head>
-        <title>ArgoCD Test App</title>
+        <title>ArgoCD App</title>
         <style>
             body { font-family: Arial; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; flex-direction: column; }
             h1 { color: #333; }
@@ -18,12 +18,12 @@ data:
         </style>
     </head>
     <body>
-        <h1>ArgoCD Test App</h1>
+        <h1>ArgoCD App</h1>
         <div class="info">
             <p><span class="badge">Version:</span> ${VERSION:-N/A}</p>
             <p><span class="badge">Pod:</span> $HOSTNAME</p>
             <p><span class="badge">IP:</span> $POD_IP</p>
-            <p><em>This is a test application for ArgoCD</em></p>
+            <p><em>This is a application for ArgoCD</em></p>
         </div>
     </body>
     </html>

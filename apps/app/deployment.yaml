@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-app
+  name: nginx-app
   labels:
-    app: example-app
+    app: nginx-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: example-app
+      app: nginx-app
   template:
     metadata:
       labels:
-        app: example-app
+        app: nginx-app
     spec:
       containers:
-      - name: example-app
+      - name: nginx-app
         image: nginx:1.25
         ports:
         - containerPort: 80
@@ -44,5 +44,5 @@ spec:
         emptyDir: {}
       - name: scripts
         configMap:
-          name: example-app-html
+          name: nginx-app-html
           defaultMode: 0777

@@ -1,4 +1,4 @@
-# argocd-example
+# argocd-nginx
 
 ## Instalación de ArgoCD
 
@@ -45,16 +45,16 @@ argocd account update-password
 ## Estructura del repositorio
 
 ```
-argocd-example/
+argocd-nginx/
 ├── apps/                          # Manifiestos de las aplicaciones
 │   └── app/
 │       ├── configmap.yaml         # Script que genera HTML dinámico
-│       ├── deployment.yaml        # Deployment: example-app
-│       ├── service.yaml           # Service: example-service
+│       ├── deployment.yaml        # Deployment: nginx-app
+│       ├── service.yaml           # Service: nginx-service
 │       ├── ingress-traefik.yaml   # Ingress para Traefik
 │       └── ingress-nginx.yaml     # Ingress para Nginx (comentado)
 └── argocd/                        # Definiciones de Application ArgoCD
-    └── example-app.yaml           # Application: example-app
+    └── nginx-app.yaml           # Application: nginx-app
 ```
 
 ## Flujo de GitOps
@@ -70,7 +70,7 @@ El ejemplo usa imagen `nginx:1.25` con un HTML que muestra información del pod 
 ## Aplicar una Application
 
 ```bash
-kubectl apply -f argocd/example-app.yaml
+kubectl apply -f argocd/nginx-app.yaml
 ```
 
 Esto se ejecuta **una sola vez**. ArgoCD se encarga automáticamente de detectar cambios en Git y sincronizar al cluster.
@@ -97,6 +97,6 @@ minikube tunnel
 Para acceder al servicio desde el navegador, añade el host a tu `/etc/hosts`:
 
 ```bash
-echo "$(kubectl get svc traefik -o jsonpath='{.status.loadBalancer.ingress[0].ip}') local.example.com" | sudo tee -a /etc/hosts # Tener activado el tunnel y corriendo traefik
+echo "$(kubectl get svc traefik -o jsonpath='{.status.loadBalancer.ingress[0].ip}') local.nginx.com" | sudo tee -a /etc/hosts # Tener activado el tunnel y corriendo traefik
 ```
 

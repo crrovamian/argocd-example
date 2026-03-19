@@ -1,17 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-app-traefik
+  name: nginx-app-traefik
 spec:
   ingressClassName: traefik
   rules:
-  - host: local.example.com
+  - host: local.nginx.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: example-service
+            name: nginx-service
             port:
               number: 80

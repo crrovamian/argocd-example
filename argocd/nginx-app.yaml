@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: example-app
+  name: nginx-app
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/crrovamian/argocd-example
+    repoURL: https://github.com/crrovamian/argocd-deployment
     targetRevision: HEAD
     path: apps/app
   destination:
